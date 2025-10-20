@@ -38,7 +38,7 @@ public class MtsOnlinePaymentTest {
         System.out.println("Тест 1: Проверка заголовка блока");
         WebElement title = driver.findElement(By.xpath("//*[contains(text(), 'Онлайн пополнение')]"));
         assertTrue(title.isDisplayed());
-        System.out.println("✓ Заголовок найден");
+        System.out.println("Заголовок найден");
     }
 
     @Test
@@ -46,7 +46,7 @@ public class MtsOnlinePaymentTest {
         System.out.println("Тест 2: Проверка логотипов");
         WebElement visaLogo = driver.findElement(By.xpath("//img[contains(@src, 'visa')]"));
         assertTrue(visaLogo.isDisplayed());
-        System.out.println("✓ Логотип Visa найден");
+        System.out.println("Логотип Visa найден");
     }
 
     @Test
@@ -54,7 +54,7 @@ public class MtsOnlinePaymentTest {
         System.out.println("Тест 3: Проверка ссылки 'Подробнее'");
         WebElement detailsLink = driver.findElement(By.xpath("//a[contains(text(), 'Подробнее о сервисе')]"));
         assertTrue(detailsLink.isDisplayed());
-        System.out.println("✓ Ссылка найдена");
+        System.out.println("Ссылка найдена");
     }
 
     @Test
@@ -65,33 +65,33 @@ public class MtsOnlinePaymentTest {
             // 1. Сначала выбираем "Услуги связи"
             WebElement serviceButton = driver.findElement(By.xpath("//*[contains(text(), 'Услуги связи')]"));
             serviceButton.click();
-            System.out.println("✓ Выбраны 'Услуги связи'");
+            System.out.println("Выбраны 'Услуги связи'");
             Thread.sleep(1000);
 
             // 2. Теперь поле номера телефона станет активным
             WebElement phoneField = driver.findElement(By.xpath("//input[@type='tel']"));
             phoneField.sendKeys("297777777");
-            System.out.println("✓ Номер введен");
+            System.out.println("Номер введен");
 
             // 3. Вводим сумму 100 рублей
             WebElement amountField = driver.findElement(By.xpath("//input[@type='number']"));
             amountField.sendKeys("100");
-            System.out.println("✓ Сумма 100 руб введена");
+            System.out.println("Сумма 100 руб введена");
 
             // 4. Нажимаем кнопку
             WebElement button = driver.findElement(By.xpath("//button[contains(text(), 'Продолжить')]"));
             String urlBefore = driver.getCurrentUrl();
 
             button.click();
-            System.out.println("✓ Кнопка нажата");
+            System.out.println("Кнопка нажата");
 
             Thread.sleep(3000);
 
             String urlAfter = driver.getCurrentUrl();
             if (!urlAfter.equals(urlBefore)) {
-                System.out.println("✓ УСПЕХ: Переход на " + urlAfter);
+                System.out.println("УСПЕХ: Переход на " + urlAfter);
             } else {
-                System.out.println("✓ Форма работает, остались на странице");
+                System.out.println("Форма работает, остались на странице");
             }
 
         } catch (Exception e) {

@@ -32,7 +32,7 @@ public class OnlinePaymentTest {
     // Тест 1: Проверка надписей в полях всех вариантов оплаты
     @Test
     public void testPlaceholdersForAllServices() {
-        System.out.println("=== Тест 1: Проверка надписей в полях всех услуг ===");
+        System.out.println("Тест 1: Проверка надписей в полях всех услуг");
 
         try {
             // Услуги связи
@@ -59,7 +59,7 @@ public class OnlinePaymentTest {
             System.out.println("Задолженность: " + debtPlaceholder);
             assertNotNull(debtPlaceholder);
 
-            System.out.println("✓ Тест 1 завершен - все надписи проверены");
+            System.out.println("Тест 1 завершен - все надписи проверены");
 
         } catch (Exception e) {
             System.out.println("Ошибка в тесте 1: " + e.getMessage());
@@ -69,7 +69,7 @@ public class OnlinePaymentTest {
     // Тест 2: Полная проверка оплаты услуг связи
     @Test
     public void testCompleteMobilePaymentWithVerification() {
-        System.out.println("=== Тест 2: Полная проверка оплаты услуг связи ===");
+        System.out.println("Тест 2: Полная проверка оплаты услуг связи");
 
         try {
             // 1. Выбираем "Услуги связи"
@@ -83,15 +83,15 @@ public class OnlinePaymentTest {
             WebElement amountInput = driver.findElement(By.xpath("//input[@type='number']"));
             amountInput.sendKeys("100");
 
-            System.out.println("✓ Форма заполнена: номер 297777777, сумма 100 руб");
+            System.out.println("Форма заполнена: номер 297777777, сумма 100 руб");
 
             // 3. Нажимаем "Продолжить"
             driver.findElement(By.xpath("//button[contains(text(), 'Продолжить')]")).click();
             sleep(3000);
-            System.out.println("✓ Кнопка 'Продолжить' нажата");
+            System.out.println("Кнопка 'Продолжить' нажата");
 
             // 4. Проверяем окно оплаты
-            System.out.println("=== Проверка окна оплаты ===");
+            System.out.println("Проверка окна оплаты");
 
             // Проверяем номер телефона
             String displayedPhone = driver.findElement(By.xpath("//*[contains(text(), '297777777')]")).getText();
@@ -124,7 +124,7 @@ public class OnlinePaymentTest {
             assertNotNull(cardCvvPlaceholder);
 
             // 6. Проверяем иконки платежных систем
-            System.out.println("=== Проверка иконок платежных систем ===");
+            System.out.println("Проверка иконок платежных систем");
 
             boolean hasVisa = driver.findElement(By.xpath("//img[contains(@src, 'visa')]")).isDisplayed();
             boolean hasMastercard = driver.findElement(By.xpath("//img[contains(@src, 'mastercard')]")).isDisplayed();
@@ -135,7 +135,7 @@ public class OnlinePaymentTest {
             assertTrue(hasVisa, "Иконка Visa отсутствует");
             assertTrue(hasMastercard, "Иконка Mastercard отсутствует");
 
-            System.out.println("✓ Тест 2 завершен - все проверки пройдены");
+            System.out.println("Тест 2 завершен - все проверки пройдены");
 
         } catch (Exception e) {
             System.out.println("Ошибка в тесте 2: " + e.getMessage());
